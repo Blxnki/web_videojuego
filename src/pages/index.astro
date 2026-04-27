@@ -48,9 +48,7 @@ import Layout from '../layouts/Layout.astro';
 	<header class="header">
 		<div class="header-bg"></div>
 		<div class="logo">
-			<span class="logo-icon">🦇</span>
 			<span class="logo-text">MIDNIGHT</span>
-			<span class="logo-divider">♦</span>
 			<span class="logo-text">OF VEIN</span>
 		</div>
 		<nav class="nav">
@@ -111,11 +109,11 @@ import Layout from '../layouts/Layout.astro';
 			</h1>
 			<p class="subtitle" data-anim="subtitle">DESCIENDE A LA OSCURIDAD</p>
 			<div class="hero-buttons" data-anim="buttons">
-				<button class="btn btn-primary" data-hover>
+				<a href="/descargar" class="btn btn-primary" data-hover>
 					<span class="btn-bg"></span>
 					<span class="btn-text">DESCARGAR</span>
 					<span class="btn-glow"></span>
-				</button>
+				</a>
 				<button class="btn btn-secondary" data-hover>
 					<span class="btn-text">VER TRAILER</span>
 					<span class="btn-border"></span>
@@ -123,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 			<div class="hero-stats" data-anim="stats">
 				<div class="stat">
-					<span class="stat-num">18+</span>
+					<span class="stat-num">16+</span>
 					<span class="stat-label">EDAD</span>
 				</div>
 				<div class="stat-divider"></div>
@@ -131,24 +129,7 @@ import Layout from '../layouts/Layout.astro';
 					<span class="stat-num">2026</span>
 					<span class="stat-label">LANZAMIENTO</span>
 				</div>
-				<div class="stat-divider"></div>
-				<div class="stat">
-					<span class="stat-num">AAA</span>
-					<span class="stat-label">CALIDAD</span>
-				</div>
 			</div>
-		</div>
-
-		<div class="scroll-indicator" data-anim="scroll">
-			<div class="scroll-mouse">
-				<div class="mouse-wheel"></div>
-			</div>
-			<span>SCROLL</span>
-		</div>
-
-		<div class="hero-cta">
-			<span class="cta-text">EXPLORA EL ABISMO</span>
-			<div class="cta-arrow">↓</div>
 		</div>
 	</section>
 
@@ -168,9 +149,9 @@ import Layout from '../layouts/Layout.astro';
 			<div class="section-header" data-anim="header">
 				<span class="section-tag">
 					<span class="tag-icon">///</span>
-					LA SANGRE CUELE
+					Historia
 				</span>
-				<h2 class="section-title">EL ECLIPSE ETERNO</h2>
+				<h2 class="section-title">Una nueva aventura</h2>
 				<div class="title-line"></div>
 			</div>
 			
@@ -188,16 +169,16 @@ import Layout from '../layouts/Layout.astro';
 				
 				<div class="story-texts">
 					<p class="story-text" data-anim="text" data-delay="0">
-						<span class="year">1892.</span> Una luna sangrienta cubrió los cielos del Reino Obscuro. 
-						El Conde Vorgen, último guardián de la sangre pura, fue traicionado y ejecutado por su propia progenie.
+						Vein lleva siglos haciendo lo que le apetecía, sin que nadie le pong límites ni le cobre facturas. Lástima que descubriera que el verdadero peligro no era el ajo, el sol ni los cazadores con estacas… eran las mesas de juego, las fichas prestadas y la compañía nocturna de dudosa reputación.
 					</p>
 					<p class="story-text" data-anim="text" data-delay="1">
-						Pero la muerte no fue el final. Despertaste en un mundo donde los vampiros dominan 
-						desde las sombras, donde la humanidad lucha por sobrevivir en ciudadelas de luz artificial.
+						Entre una racha de mala suerte y otra de malas decisiones, cometió el error de deberle una pequeña fortuna al capo más peligroso de Volvania City. Spoiler: la mafia no acepta "te lo pago la semana que viene".
 					</p>
-					<p class="story-text highlight" data-anim="text" data-delay="2">
-						Tu misión: <span class="hl-1">recuperar tu humanidad</span>... o 
-						<span class="hl-2">abrazar la oscuridad</span> definitivamente.
+					<p class="story-text" data-anim="text" data-delay="2">
+						No hubo carta de cobro. Solo un golpe en la nuca, un saco en la cabeza y un despertar en una celda sin ventanas que huele a miedo y a lejía barata. Ya no le deben respeto. Le deben la cabeza.
+					</p>
+					<p class="story-text highlight" data-anim="text" data-delay="3">
+						Pero Vein es vampiro, y lleva eones practicando el arte de colarse donde no le invitan y salir antes de que cierren la puerta. Ahora su misión es simple: escapar. Sin poderes ilimitados, sin reservas de sangre y con una adicción que, irónicamente, le ha metido en este lío.
 					</p>
 				</div>
 			</div>
@@ -216,9 +197,9 @@ import Layout from '../layouts/Layout.astro';
 			<div class="section-header" data-anim="header">
 				<span class="section-tag">
 					<span class="tag-icon">///</span>
-					EL PODER OSCURO
+					¿podras escapar?
 				</span>
-				<h2 class="section-title">SISTEMA DE JUEGO</h2>
+				<h2 class="section-title">Personajes</h2>
 				<div class="title-line"></div>
 			</div>
 
@@ -298,166 +279,7 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section id="classes" class="classes">
-		<div class="classes-bg">
-			<div class="class-glow c-glow-1"></div>
-			<div class="class-glow c-glow-2"></div>
-			<div class="class-glow c-glow-3"></div>
-		</div>
-
-		<div class="section-content">
-			<div class="section-header" data-anim="header">
-				<span class="section-tag">
-					<span class="tag-icon">///</span>
-					ELIGE TU CAMINO
-				</span>
-				<h2 class="section-title">CLASES</h2>
-				<div class="title-line"></div>
-			</div>
-
-			<div class="classes-showcase">
-				<div class="class-card" data-anim="class" data-delay="0" data-hover>
-					<div class="class-visual">
-						<span class="class-emoji">🦇</span>
-						<div class="class-aura"></div>
-					</div>
-					<div class="class-info">
-						<h3>NO MUERTO</h3>
-						<p class="class-desc">Velocidad sobrehumana y transformación en niebla. El Predator definitivo.</p>
-						<div class="class-stats">
-							<div class="stat-bar">
-								<span class="sb-label">FUERZA</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 60%"></div></div>
-							</div>
-							<div class="stat-bar">
-								<span class="sb-label">VELOCIDAD</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 100%"></div></div>
-							</div>
-							<div class="stat-bar">
-								<span class="sb-label">MAGIA</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 40%"></div></div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="class-card" data-anim="class" data-delay="1" data-hover>
-					<div class="class-visual">
-						<span class="class-emoji">💀</span>
-						<div class="class-aura"></div>
-					</div>
-					<div class="class-info">
-						<h3>NIGROMANTE</h3>
-						<p class="class-desc">Controla los muertos y desata devastación sobrenatural. El Señor de la Muerte.</p>
-						<div class="class-stats">
-							<div class="stat-bar">
-								<span class="sb-label">FUERZA</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 40%"></div></div>
-							</div>
-							<div class="stat-bar">
-								<span class="sb-label">VELOCIDAD</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 60%"></div></div>
-							</div>
-							<div class="stat-bar">
-								<span class="sb-label">MAGIA</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 100%"></div></div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="class-card" data-anim="class" data-delay="2" data-hover>
-					<div class="class-visual">
-						<span class="class-emoji">🩸</span>
-						<div class="class-aura"></div>
-					</div>
-					<div class="class-info">
-						<h3>COLECCIONISTA</h3>
-						<p class="class-desc">Absorbe habilidades de tus víctimas. El científico del horror.</p>
-						<div class="class-stats">
-							<div class="stat-bar">
-								<span class="sb-label">FUERZA</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 80%"></div></div>
-							</div>
-							<div class="stat-bar">
-								<span class="sb-label">VELOCIDAD</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 80%"></div></div>
-							</div>
-							<div class="stat-bar">
-								<span class="sb-label">MAGIA</span>
-								<div class="sb-fill"><div class="sb-progress" style="width: 60%"></div></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section id="media" class="media">
-		<div class="media-bg">
-			<div class="media-scanlines"></div>
-		</div>
-
-		<div class="section-content">
-			<div class="section-header" data-anim="header">
-				<span class="section-tag">
-					<span class="tag-icon">///</span>
-					VISUALES
-				</span>
-				<h2 class="section-title">GALERÍA</h2>
-				<div class="title-line"></div>
-			</div>
-
-			<div class="media-showcase">
-				<div class="media-item" data-anim="media" data-delay="0" data-hover>
-					<div class="media-frame">
-						<div class="media-content">
-							<span class="media-icon">▶</span>
-							<span class="media-label">TRAILER</span>
-						</div>
-						<div class="media-overlay">
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-						</div>
-					</div>
-				</div>
-
-				<div class="media-item" data-anim="media" data-delay="1" data-hover>
-					<div class="media-frame">
-						<div class="media-content">
-							<span class="media-icon">🎮</span>
-							<span class="media-label">GAMEPLAY</span>
-						</div>
-						<div class="media-overlay">
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-						</div>
-					</div>
-				</div>
-
-				<div class="media-item" data-anim="media" data-delay="2" data-hover>
-					<div class="media-frame">
-						<div class="media-content">
-							<span class="media-icon">🎨</span>
-							<span class="media-label">CONCEPT ART</span>
-						</div>
-						<div class="media-overlay">
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-							<span class="mo-corner"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
+	
 	<footer class="footer">
 		<div class="footer-bg">
 			<div class="footer-grid"></div>
@@ -1120,13 +942,12 @@ import Layout from '../layouts/Layout.astro';
 		});
 	}
 
-	// ============ CLICK SHAKE HANDLER ============
-	function initClickShake() {
+	// ============ CLICK EFFECT (without shake) ============
+	function initClickEffect() {
 		const clickableElements = document.querySelectorAll('a, button, .feature-card, .class-card, .media-item, .nav-link');
 		
 		clickableElements.forEach((el: any) => {
 			el.addEventListener('click', () => {
-				screenShake(8, 0.2);
 				gsap.to(el, {
 					scale: 0.95,
 					duration: 0.1,
@@ -1194,7 +1015,7 @@ import Layout from '../layouts/Layout.astro';
 	// ============ INIT ALL EFFECTS ============
 	initParallax();
 	initGlowEffects();
-	initClickShake();
+	initClickEffect();
 
 	// ============ ADDITIONAL EFFECTS ============
 	// Glitch effect on title words
@@ -1617,6 +1438,10 @@ import Layout from '../layouts/Layout.astro';
 	.nav {
 		display: flex;
 		gap: 35px;
+		background: rgba(10, 10, 10, 0.8);
+		padding: 10px 20px;
+		border-radius: 8px;
+		backdrop-filter: blur(10px);
 	}
 
 	.nav-link {
