@@ -1,23 +1,302 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>MIDNIGHT OF VEIN</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Syne:wght@400;700;800&family=Creepster&display=swap" rel="stylesheet">
 	</head>
 	<body>
+		<div class="crt-overlay"></div>
+		<div class="crt-scanlines"></div>
+		<div class="vignette"></div>
+		<div class="noise"></div>
+		<div class="chromatic-aberration"></div>
+		<div class="screen-flicker"></div>
+		<div class="corner-ornaments">
+			<span class="ornament tl">❧</span>
+			<span class="ornament tr">❧</span>
+			<span class="ornament bl">❧</span>
+			<span class="ornament br">❧</span>
+		</div>
+		<div class="y2k-decorations">
+			<div class="barcode barcode-1"></div>
+			<div class="barcode barcode-2"></div>
+			<div class="glitch-lines">
+				<span></span><span></span><span></span><span></span><span></span>
+			</div>
+		</div>
 		<slot />
 	</body>
 </html>
 
-<style>
-	html,
-	body {
+<style is:global>
+	:root {
+		--black: #0a0a0a;
+		--black-light: #151515;
+		--black-lighter: #1a1a1a;
+		--violet-dark: #581c87;
+		--violet: #8b5cf6;
+		--violet-light: #a855f7;
+		--violet-glow: #c084fc;
+		--red-dark: #7f1d1d;
+		--red: #dc2626;
+		--red-light: #ef4444;
+		--red-glow: #f87171;
+		--white: #fafafa;
+		--gray: #737373;
+		--neon-pink: #ff00ff;
+		--neon-cyan: #00ffff;
+		--neon-green: #39ff14;
+	}
+
+	* {
 		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: 'Syne', sans-serif;
+		background: var(--black);
+		color: var(--white);
+		overflow-x: hidden;
+		min-height: 100vh;
+		position: relative;
+	}
+
+	/* ============ CRT OVERLAY ============ */
+	.crt-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
+		pointer-events: none;
+		z-index: 1000;
+		background: repeating-linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 0.15),
+			rgba(0, 0, 0, 0.15) 1px,
+			transparent 1px,
+			transparent 2px
+		);
+		opacity: 0.3;
+	}
+
+	.crt-scanlines {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 1001;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent 0px,
+			transparent 3px,
+			rgba(0, 0, 0, 0.1) 3px,
+			rgba(0, 0, 0, 0.1) 6px
+		);
+		animation: scanlinesMove 0.1s linear infinite;
+	}
+
+	@keyframes scanlinesMove {
+		0% { background-position: 0 0; }
+		100% { background-position: 0 6px; }
+	}
+
+	.vignette {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 999;
+		background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+	}
+
+	.noise {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 998;
+		opacity: 0.05;
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+	}
+
+	/* ============ CHROMATIC ABERRATION ============ */
+	.chromatic-aberration {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 997;
+		mix-blend-mode: color-dodge;
+		opacity: 0;
+		background: 
+			linear-gradient(90deg, rgba(255, 0, 0, 0.02) 0%, transparent 50%, rgba(0, 255, 255, 0.02) 100%);
+		animation: chromaticShift 4s ease-in-out infinite;
+	}
+
+	@keyframes chromaticShift {
+		0%, 100% { opacity: 0; transform: translateX(0); }
+		50% { opacity: 0.3; transform: translateX(2px); }
+	}
+
+	/* ============ SCREEN FLICKER ============ */
+	.screen-flicker {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 996;
+		background: transparent;
+		animation: flicker 0.15s infinite;
+	}
+
+	@keyframes flicker {
+		0% { opacity: 0.97; }
+		50% { opacity: 1; }
+		100% { opacity: 0.98; }
+	}
+
+	/* ============ CORNER ORNAMENTS ============ */
+	.corner-ornaments {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 995;
+	}
+
+	.ornament {
+		position: absolute;
+		font-size: 2rem;
+		color: var(--violet);
+		opacity: 0.3;
+		font-family: 'Creepster', cursive;
+	}
+
+	.ornament.tl { top: 20px; left: 20px; transform: rotate(0deg); }
+	.ornament.tr { top: 20px; right: 20px; transform: rotate(90deg); }
+	.ornament.bl { bottom: 20px; left: 20px; transform: rotate(270deg); }
+	.ornament.br { bottom: 20px; right: 20px; transform: rotate(180deg); }
+
+	/* ============ Y2K DECORATIONS ============ */
+	.y2k-decorations {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 994;
+	}
+
+	.barcode {
+		position: absolute;
+		width: 60px;
+		height: 100%;
+		background: repeating-linear-gradient(
+			90deg,
+			transparent 0px,
+			transparent 2px,
+			rgba(139, 92, 246, 0.1) 2px,
+			rgba(139, 92, 246, 0.1) 4px
+		);
+	}
+
+	.barcode-1 { left: 10px; }
+	.barcode-2 { right: 10px; }
+
+	.glitch-lines {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.glitch-lines span {
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background: transparent;
+		left: 0;
+	}
+
+	.glitch-lines span:nth-child(1) { top: 20%; animation: glitchLine1 3s infinite; }
+	.glitch-lines span:nth-child(2) { top: 40%; animation: glitchLine2 4s infinite; }
+	.glitch-lines span:nth-child(3) { top: 60%; animation: glitchLine3 3.5s infinite; }
+	.glitch-lines span:nth-child(4) { top: 80%; animation: glitchLine4 4.5s infinite; }
+	.glitch-lines span:nth-child(5) { top: 90%; animation: glitchLine5 3s infinite; }
+
+	@keyframes glitchLine1 {
+		0%, 100% { transform: translateX(-100%); background: transparent; }
+		50% { transform: translateX(0); background: rgba(255, 0, 255, 0.3); }
+	}
+
+	@keyframes glitchLine2 {
+		0%, 100% { transform: translateX(100%); background: transparent; }
+		50% { transform: translateX(0); background: rgba(0, 255, 255, 0.2); }
+	}
+
+	@keyframes glitchLine3 {
+		0%, 100% { transform: translateX(-100%); background: transparent; }
+		50% { transform: translateX(0); background: rgba(139, 92, 246, 0.3); }
+	}
+
+	@keyframes glitchLine4 {
+		0%, 100% { transform: translateX(100%); background: transparent; }
+		50% { transform: translateX(0); background: rgba(220, 38, 38, 0.2); }
+	}
+
+	@keyframes glitchLine5 {
+		0%, 100% { transform: translateX(-100%); background: transparent; }
+		50% { transform: translateX(0); background: rgba(57, 255, 20, 0.2); }
+	}
+
+	/* ============ SCROLLBAR ============ */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--black);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: linear-gradient(180deg, var(--violet), var(--red));
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: linear-gradient(180deg, var(--violet-light), var(--red-light));
+	}
+
+	/* ============ SELECTION ============ */
+	::selection {
+		background: var(--violet);
+		color: var(--white);
 	}
 </style>

@@ -1,0 +1,367 @@
+---
+// GameHero.astro - Main hero section for Midnight of Vein
+---
+
+<div class="game-hero">
+  <div class="vampire-logo">
+    <h1>MIDNIGHT OF VEIN</h1>
+    <p class="subtitle">Awaken Your Dark Destiny</p>
+  </div>
+  
+  <div class="game-characters">
+    <div class="character vampire">
+      <div class="vampire-eyes"></div>
+      <div class="vampire-fangs"></div>
+    </div>
+    <div class="character hunter">
+      <div class="hunter-cross"></div>
+      <div class="hunter-silhouette"></div>
+    </div>
+  </div>
+  
+  <div class="game-controls">
+    <button class="btn-play">PLAY NOW</button>
+    <button class="btn-learn">LEARN MORE</button>
+  </div>
+  
+  <div class="blood-particles">
+    <!-- Blood particles will be animated with GSAP -->
+  </div>
+</div>
+
+<style>
+  .game-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+    padding: 0 2rem;
+  }
+  
+  .vampire-logo {
+    margin-bottom: 3rem;
+    z-index: 10;
+    position: relative;
+  }
+  
+  .vampire-logo h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 4.5rem;
+    letter-spacing: 0.15em;
+    text-shadow: 
+      0 0 10px rgba(138, 43, 226, 0.7),
+      0 0 20px rgba(138, 43, 226, 0.5),
+      0 0 30px rgba(138, 43, 226, 0.3);
+    margin: 0;
+    background: linear-gradient(to right, #8a2be2, #ff1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 
+        0 0 10px rgba(138, 43, 226, 0.7),
+        0 0 20px rgba(138, 43, 226, 0.5),
+        0 0 30px rgba(138, 43, 226, 0.3);
+    }
+    to {
+      text-shadow: 
+        0 0 15px rgba(138, 43, 226, 0.9),
+        0 0 25px rgba(138, 43, 226, 0.7),
+        0 0 35px rgba(138, 43, 226, 0.5);
+    }
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #ff6b6b;
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+  }
+  
+  .game-characters {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .character {
+    position: relative;
+    width: 120px;
+    height: 180px;
+  }
+  
+  .vampire {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .hunter {
+    animation: float 3s ease-in-out infinite 1.5s;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .vampire-eyes {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 12px;
+  }
+  
+  .vampire-eyes::before,
+  .vampire-eyes::after {
+    content: '';
+    position: absolute;
+    background-color: #ff0000;
+    border-radius: 50%;
+  }
+  
+  .vampire-eyes::before {
+    left: 0;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .vampire-eyes::after {
+    right: 0;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .vampire-fangs {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 15px;
+  }
+  
+  .vampire-fangs::before,
+  .vampire-fangs::after {
+    content: '';
+    position: absolute;
+    background-color: #ffffff;
+    width: 4px;
+    height: 12px;
+    border-radius: 2px;
+  }
+  
+  .vampire-fangs::before {
+    left: 4px;
+  }
+  
+  .vampire-fangs::after {
+    right: 4px;
+  }
+  
+  .hunter-cross {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+  }
+  
+  .hunter-cross::before,
+  .hunter-cross::after {
+    content: '';
+    position: absolute;
+    background-color: #ffd700;
+  }
+  
+  .hunter-cross::before {
+    width: 4px;
+    height: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .hunter-cross::after {
+    width: 24px;
+    height: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .hunter-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 100px;
+    background: linear-gradient(to top, #2f4f4f, #4b5320);
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .game-controls {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .btn-play, .btn-learn {
+    padding: 1rem 2.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .btn-play {
+    background: linear-gradient(45deg, #ff0000, #8b0000);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+  
+  .btn-learn {
+    background: linear-gradient(45deg, #8a2be2, #4b0082);
+    color: white;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .btn-play:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7),
+                0 0 10px rgba(255, 0, 0, 0.5);
+    background: linear-gradient(45deg, #ff2222, #a00000);
+  }
+  
+  .btn-learn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.7),
+                0 0 10px rgba(138, 43, 226, 0.5);
+    background: linear-gradient(45deg, #9a3be2, #5b0092);
+  }
+  
+  .btn-play::before,
+  .btn-learn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(30deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .btn-play:hover::before,
+  .btn-learn:hover::before {
+    transform: rotate(30deg) translateX(50%);
+  }
+  
+  .blood-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
+  
+  .blood-drop {
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    background-color: #ff0000;
+    border-radius: 50% 50% 40% 40%;
+    opacity: 0.7;
+    animation: fall linear infinite;
+  }
+  
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .vampire-logo h1 {
+      font-size: 3rem;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+    }
+    
+    .game-characters {
+      gap: 2rem;
+    }
+    
+    .character {
+      width: 90px;
+      height: 135px;
+    }
+    
+    .btn-play, .btn-learn {
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .vampire-logo h1 {
+      font-size: 2.2rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+    }
+    
+    .game-characters {
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .game-controls {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
