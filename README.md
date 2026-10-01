@@ -36,6 +36,9 @@ Las dependencias quedan fijadas por `package-lock.json`. Para reproducir una ins
 | `src/components/Icon.astro` | Iconos vectoriales compartidos. |
 | `src/styles/global.css` | Diseño Y2K gótico, adaptación a móvil, estados de foco y reducción de movimiento. |
 | `src/scripts/experience.ts` | Animaciones, menú móvil y galería accesible. |
+| `src/scripts/signal.ts` | Encendido CRT, cámaras interactivas, inclinación 3D y secuencias de scroll con GSAP y ScrollTrigger. |
+| `src/styles/signal.css` | Capa visual CRT, ruido, barrido de señal, cromo y ornamentación gótica. |
+| `src/components/SignalAtmosphere.astro` | Textura y viñeta decorativas, sin interceptar clics. |
 | `src/data/downloads.ts` | Enlaces de descarga para Windows y Android. |
 | `public/media/` | Logo, fondo de la prisión y capturas en WebP. |
 | `public/fonts/` | Tipografías locales y sus licencias. |
@@ -58,7 +61,11 @@ Las imágenes de `public/media/` muestran la **versión en desarrollo** del jueg
 
 El contenido y los enlaces son accesibles sin JavaScript. Los elementos de entrada (`data-hero-reveal`) y de revelado al desplazarse (`data-reveal`) están visibles por defecto. JavaScript activa las animaciones GSAP; el seguimiento del puntero (`data-parallax`) y el desplazamiento sutil de botones (`data-magnetic`) se limitan a dispositivos con puntero fino.
 
-El botón **«Animaciones: sí/no»** del pie permite desactivar el movimiento y restablece las transformaciones y opacidades. La elección se guarda en `localStorage`, con la clave `midnight-of-vein:motion`. Si no hay una elección explícita, se sigue `prefers-reduced-motion` y sus cambios; una elección explícita del usuario tiene prioridad.
+Los botones **«Animaciones: sí/no»** de la cabecera y del pie están sincronizados: desactivan el movimiento y restablecen las transformaciones, opacidades y recortes animados. La elección se guarda en `localStorage`, con la clave `midnight-of-vein:motion`. Si no hay una elección explícita, se sigue `prefers-reduced-motion` y sus cambios; una elección explícita del usuario tiene prioridad.
+
+El monitor de la portada simula el encendido de un CRT cuando entra en pantalla, con ruido suave, líneas de barrido y separación cromática puntual en los indicadores. Sus cuatro botones cambian entre capturas reales; la nueva imagen se carga antes de sustituir la anterior y el estado se anuncia a lectores de pantalla. Las cámaras funcionan también con las animaciones desactivadas. Sin JavaScript permanece visible la captura inicial y se ocultan los controles interactivos.
+
+GSAP y ScrollTrigger animan el sello del expediente, la aparición lateral de las imágenes de jugabilidad y las órbitas del cierre. La profundidad del fondo y la inclinación del monitor y las tarjetas se limitan a escritorio con ratón. Las animaciones ambientales se pausan fuera de pantalla o al ocultar la pestaña; los contextos GSAP y los observadores se limpian al desactivar el movimiento o cambiar de página. Las texturas CRT estáticas permanecen como parte del diseño.
 
 El menú móvil utiliza `#menu-toggle` y `#site-nav`, con un cambio a escritorio a los **900 px**. Se cierra al elegir un enlace, pulsar Escape o pasar al tamaño de escritorio.
 

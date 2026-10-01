@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import '../styles/signal.css';
+import SignalAtmosphere from '../components/SignalAtmosphere.astro';
 interface Props { title?: string; description?: string; }
 const { title = 'Midnight of Vein — La noche no termina entre rejas', description = 'Un vampiro, una deuda y una prisión llena de experimentos. Descubre Midnight of Vein: combate, plataformas y puzles. Disponible para Windows y Android.' } = Astro.props;
 const preview = new URL('/media/midnight-of-vein.webp', Astro.url.origin).href;
@@ -23,6 +25,7 @@ const preview = new URL('/media/midnight-of-vein.webp', Astro.url.origin).href;
     <title>{title}</title>
   </head>
   <body>
+    <SignalAtmosphere />
     <a class="skip-link" href="#main">Saltar al contenido</a>
     <slot />
     <script>import '../scripts/experience';</script>

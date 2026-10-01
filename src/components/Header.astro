@@ -5,6 +5,7 @@ const isDownload = Astro.url.pathname.replace(/\/$/, '') === '/descargar';
 <header class="site-header">
   <div class="nav-wrap">
     <a class="wordmark" href="/" aria-label="Midnight of Vein, inicio">MIDNIGHT<span>OF VEIN <i>✦</i></span></a>
+    <button class="signal-toggle" data-motion-toggle aria-pressed="true" hidden><span class="motion-dot" aria-hidden="true"></span><span data-motion-label>Animaciones: sí</span></button>
     <button id="menu-toggle" class="menu-toggle icon-button" aria-label="Abrir o cerrar menú" aria-expanded="false" aria-controls="site-nav" hidden><Icon name="menu" /></button>
     <nav id="site-nav" aria-label="Navegación principal">
       <a href="/#historia">La historia</a><a href="/#jugabilidad">El juego</a><a href="/#capturas">Capturas</a>

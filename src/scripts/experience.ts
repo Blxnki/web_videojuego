@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { setupSignal } from './signal';
 
 const MOTION_STORAGE_KEY = 'midnight-of-vein:motion';
 const DESKTOP_QUERY = '(min-width: 900px)';
@@ -28,12 +29,12 @@ function setupExperience(): () => void {
     opacity: element.style.opacity,
     willChange: element.style.willChange,
   }]));
-  const motionButton = document.querySelector<HTMLButtonElement>('#motion-toggle');
-  const motionLabel = motionButton?.querySelector<HTMLElement>('[data-motion-label]');
+  const motionButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('#motion-toggle, [data-motion-toggle]'));
   let revealObserver: IntersectionObserver | null = null;
   let pointerFrame: number | null = null;
   let pointerPosition = { x: 0, y: 0 };
   let motionEnabled: boolean | undefined;
+  const signalExperience = setupSignal({ signal, isEnabled: () => motionEnabled === true, finePointer });
 
   const readPreference = (): MotionPreference => {
     try {
@@ -65,6 +66,7 @@ function setupExperience(): () => void {
   };
 
   const stopMotion = (): void => {
+    signalExperience.stop();
     revealObserver?.disconnect();
     revealObserver = null;
     cancelPointerFrame();
@@ -90,6 +92,7 @@ function setupExperience(): () => void {
   };
 
   const startMotion = (): void => {
+    signalExperience.start();
     reveal(heroReveals, 0.095);
     if (!('IntersectionObserver' in window) || !reveals.length) return;
     // Hiding is opt-in at runtime, after both motion and observer support are checked.
@@ -108,9 +111,12 @@ function setupExperience(): () => void {
 
   const applyMotion = (enabled: boolean): void => {
     root.dataset.motion = enabled ? 'on' : 'off';
-    motionButton?.setAttribute('aria-pressed', String(enabled));
-    motionButton?.setAttribute('aria-label', enabled ? 'Desactivar animaciones' : 'Activar animaciones');
-    if (motionLabel) motionLabel.textContent = `Animaciones: ${enabled ? 'sí' : 'no'}`;
+    for (const button of motionButtons) {
+      button.setAttribute('aria-pressed', String(enabled));
+      button.setAttribute('aria-label', enabled ? 'Desactivar animaciones' : 'Activar animaciones');
+      const label = button.querySelector<HTMLElement>('[data-motion-label]');
+      if (label) label.textContent = `Animaciones: ${enabled ? 'sí' : 'no'}`;
+    }
     if (motionEnabled === enabled) return;
     stopMotion();
     motionEnabled = enabled;
@@ -120,7 +126,7 @@ function setupExperience(): () => void {
   // An explicit choice wins; otherwise follow the OS, including live changes.
   const syncMotion = (): void => applyMotion(preference ? preference === 'on' : !reducedMotion.matches);
 
-  motionButton?.addEventListener('click', () => {
+  for (const button of motionButtons) button.addEventListener('click', () => {
     preference = motionEnabled ? 'off' : 'on';
     try {
       window.localStorage.setItem(MOTION_STORAGE_KEY, preference);
@@ -281,7 +287,7 @@ function setupExperience(): () => void {
   }
 
   syncMotion();
-  if (motionButton) motionButton.hidden = false;
+  for (const button of motionButtons) button.hidden = false;
   if (menuButton) menuButton.hidden = false;
 
   return () => {

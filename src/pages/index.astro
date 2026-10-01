@@ -16,6 +16,7 @@ const captures = [
     <section class="hero" data-hero aria-labelledby="game-title">
       <img class="hero-environment" src="/media/prison-laboratory.webp" alt="" width="1920" height="1080" fetchpriority="high" />
       <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-aura" aria-hidden="true"></div>
       <div class="hero-topline wrap"><span><i class="status-light"></i> UNA TRANSMISIÓN DESDE VOLVANIA</span><span>INDEPENDIENTE · HECHO EN GODOT</span></div>
       <div class="hero-content wrap">
         <div class="hero-copy">
@@ -27,10 +28,18 @@ const captures = [
           <p class="platform-line" data-hero-reveal><Icon name="windows" /> Windows <span>+</span> <Icon name="android" /> Android <span class="platform-divider">/</span> DESCARGA DIRECTA</p>
         </div>
         <div class="hero-visual" data-parallax="10">
+          <svg class="gothic-sigil" viewBox="0 0 600 640" fill="none" aria-hidden="true">
+            <path class="sigil-arch" d="M65 570V310C65 145 190 82 300 20c110 62 235 125 235 290v260M85 570V310C85 160 205 100 300 44c95 56 215 116 215 266v260M110 570V315c0-128 104-189 190-241 86 52 190 113 190 241v255" />
+            <g class="sigil-rotor"><circle cx="300" cy="330" r="220" /><ellipse cx="300" cy="330" rx="270" ry="82" transform="rotate(-30 300 330)" /><ellipse cx="300" cy="330" rx="270" ry="82" transform="rotate(30 300 330)" /><path d="M300 98v464M68 330h464M136 166l328 328M136 494l328-328" stroke-dasharray="2 10" /></g>
+            <path class="sigil-blade" d="m300 0 9 32 23 10-23 9-9 37-9-37-23-9 23-10ZM48 297l6 23 18 10-18 8-6 25-6-25-18-8 18-10ZM552 297l6 23 18 10-18 8-6 25-6-25-18-8 18-10Z" />
+          </svg>
+          <div class="signal-coordinate" aria-hidden="true"><span>VLV / SECTOR 09</span><span>✝ FRECUENCIA MALDITA</span></div>
           <span class="orbit-star star-one" aria-hidden="true">✧</span><span class="orbit-star star-two" aria-hidden="true">✦</span>
-          <div class="monitor" data-hero-reveal>
-            <div class="monitor-bar"><span><i class="status-light red"></i> PRISIÓN / CÁMARA 02</span><span class="monitor-buttons" aria-hidden="true">— □ ×</span></div>
-            <div class="monitor-screen"><img src="/media/lasers-1280.webp" srcset="/media/lasers-640.webp 640w, /media/lasers-1280.webp 1280w" sizes="(max-width: 899px) 90vw, 48vw" width="1280" height="720" alt="Una sala de Midnight of Vein: plataformas, barrotes y rayos láser rojos" fetchpriority="high" /><span class="screen-corner tl" aria-hidden="true"></span><span class="screen-corner br" aria-hidden="true"></span></div>
+          <div class="monitor" data-hero-reveal data-tilt>
+            <div class="monitor-bar"><span><i class="status-light red"></i> VOLVANIA / CCTV</span><span class="monitor-buttons" aria-hidden="true">— □ ×</span></div>
+            <div class="monitor-screen" id="camera-screen"><img data-camera-image src="/media/lasers-1280.webp" srcset="/media/lasers-640.webp 640w, /media/lasers-1280.webp 1280w" sizes="(max-width: 899px) 90vw, 48vw" width="1280" height="720" alt="Una sala de Midnight of Vein: plataformas, barrotes y rayos láser rojos" fetchpriority="high" /><div class="crt-scan" aria-hidden="true"></div><div class="crt-noise" aria-hidden="true"></div><div class="camera-osd" aria-hidden="true"><span>REC <i></i></span><span data-camera-osd>CH 01 / PLATAFORMAS</span></div><span class="screen-corner tl" aria-hidden="true"></span><span class="screen-corner br" aria-hidden="true"></span></div>
+            <div class="camera-controls" data-camera-controls hidden><span class="camera-frequency">CAMBIAR SEÑAL <span aria-hidden="true">↳</span></span><div class="camera-channels" role="group" aria-label="Cámaras de la prisión">{captures.map((capture, index) => <button type="button" class="camera-channel" data-camera={capture.image} data-camera-alt={capture.alt} data-camera-name={capture.label.replace(/^\d+ \/ /, '')} aria-label={`Cámara ${index + 1}: ${capture.label.replace(/^\d+ \/ /, '').toLowerCase()}`} aria-pressed={index === 0 ? 'true' : 'false'} aria-controls="camera-screen">{String(index + 1).padStart(2, '0')}</button>)}</div></div>
+            <p class="sr-only" data-camera-status role="status" aria-live="polite"></p>
             <div class="monitor-footer"><span>CAPTURA EN DESARROLLO</span><span>SEÑAL RECUPERADA <i class="signal-bars" aria-hidden="true">▂▄▆█</i></span></div>
           </div>
           <div class="evidence-tag" data-hero-reveal><span class="barcode" aria-hidden="true"></span><div>SUJETO: VEIN<br /><strong>ESTADO: NO COOPERATIVO</strong></div><Icon name="star" /></div>
@@ -55,7 +64,7 @@ const captures = [
       <div class="section-heading" data-reveal><div><p class="eyebrow"><span>04</span> EVIDENCIAS DEL ENCIERRO</p><h2 id="gallery-title">Dentro de<br /><em>la prisión.</em></h2></div><p>Capturas reales de la versión en desarrollo.<br />Ábrelas. Mira de cerca.</p></div>
       <div class="gallery-grid">{captures.map((capture) => <a class="gallery-item" href={`/media/${capture.image}-1280.webp`} data-gallery data-caption={`${capture.title} ${capture.alt}.`} data-reveal><div class="gallery-image"><img src={`/media/${capture.image}-640.webp`} srcset={`/media/${capture.image}-640.webp 640w, /media/${capture.image}-1280.webp 1280w`} sizes="(max-width: 600px) 92vw, 46vw" alt={capture.alt} width="1280" height="720" loading="lazy" /><span class="image-expand" aria-hidden="true"><Icon name="arrow" /></span></div><div class="gallery-caption"><h3>{capture.title}</h3><span>{capture.label}</span></div></a>)}</div>
     </section>
-    <section class="escape-section" aria-labelledby="escape-title"><div class="escape-orbit" aria-hidden="true"></div><div class="escape-content wrap" data-reveal><p class="eyebrow">TU PRÓXIMA MALA DECISIÓN EMPIEZA AQUÍ</p><h2 id="escape-title">Rompe<br /><em>el encierro.</em></h2><p>La deuda puede esperar. Tu fuga, no.</p><a class="button button-primary" href="/descargar" data-magnetic>Descargar Midnight of Vein <Icon name="download" /></a><span class="escape-platforms">WINDOWS + ANDROID</span></div><span class="escape-star" aria-hidden="true">✦</span></section>
+    <section class="escape-section" aria-labelledby="escape-title"><div class="escape-orbit" aria-hidden="true"></div><div class="escape-runes" aria-hidden="true">✧ ── ✝ ── ✧</div><div class="escape-content wrap" data-reveal><p class="eyebrow">TU PRÓXIMA MALA DECISIÓN EMPIEZA AQUÍ</p><h2 id="escape-title">Rompe<br /><em>el encierro.</em></h2><p>La deuda puede esperar. Tu fuga, no.</p><a class="button button-primary" href="/descargar" data-magnetic>Descargar Midnight of Vein <Icon name="download" /></a><span class="escape-platforms">WINDOWS + ANDROID</span></div><span class="escape-star" aria-hidden="true">✦</span></section>
   </main>
   <Footer />
   <dialog id="gallery-dialog" aria-label="Galería de Midnight of Vein" aria-describedby="gallery-caption"><div class="dialog-toolbar"><span>ARCHIVO VISUAL / MIDNIGHT OF VEIN</span><button class="icon-button" data-gallery-close aria-label="Cerrar galería"><Icon name="close" /></button></div><img id="gallery-image" width="1280" height="720" alt="" /><div class="dialog-bottom"><p id="gallery-caption"></p><div class="gallery-controls"><button id="gallery-prev" class="icon-button" aria-label="Captura anterior">←</button><span id="gallery-counter" aria-live="polite"></span><button id="gallery-next" class="icon-button" aria-label="Captura siguiente">→</button></div></div></dialog>
