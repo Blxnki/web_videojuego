@@ -1,0 +1,13 @@
+---
+interface Props { name?: 'arrow' | 'download' | 'star' | 'windows' | 'android' | 'close' | 'menu'; class?: string; }
+const { name = 'arrow', class: className } = Astro.props;
+---
+<svg class={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {name === 'arrow' && <path d="M5 19 19 5M5 5h14v14" />}
+  {name === 'download' && <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" />}
+  {name === 'star' && <path d="m12 1 2.4 8.6L23 12l-8.6 2.4L12 23l-2.4-8.6L1 12l8.6-2.4L12 1Z" />}
+  {name === 'windows' && <path d="m3 5 8-1v7H3V5Zm10-1 8-1v8h-8V4ZM3 13h8v7l-8-1v-6Zm10 0h8v8l-8-1v-7Z" />}
+  {name === 'android' && <><path d="m7 5-2-3m12 3 2-3M3 13a9 9 0 0 1 18 0H3Zm1 3v5m16-5v5M8 16v5m8-5v5" /><path d="M8 9h.01M16 9h.01" stroke-width="2.8" /></>}
+  {name === 'close' && <path d="m5 5 14 14M19 5 5 19" />}
+  {name === 'menu' && <path d="M4 7h16M4 12h16M4 17h16" />}
+</svg>

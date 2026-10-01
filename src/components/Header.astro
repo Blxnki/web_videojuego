@@ -1,0 +1,14 @@
+---
+import Icon from './Icon.astro';
+const isDownload = Astro.url.pathname.replace(/\/$/, '') === '/descargar';
+---
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="wordmark" href="/" aria-label="Midnight of Vein, inicio">MIDNIGHT<span>OF VEIN <i>✦</i></span></a>
+    <button id="menu-toggle" class="menu-toggle icon-button" aria-label="Abrir o cerrar menú" aria-expanded="false" aria-controls="site-nav" hidden><Icon name="menu" /></button>
+    <nav id="site-nav" aria-label="Navegación principal">
+      <a href="/#historia">La historia</a><a href="/#jugabilidad">El juego</a><a href="/#capturas">Capturas</a>
+      <a class="nav-download" href="/descargar" aria-current={isDownload ? 'page' : undefined}>Descargar <Icon name="download" /></a>
+    </nav>
+  </div>
+</header>

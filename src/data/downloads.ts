@@ -1,0 +1,5 @@
+// Signed public download links from the original website. Renew before expiration.
+export const downloads = {
+  windows: "https://uvpuqtwihefagzmcohbr.supabase.co/storage/v1/object/sign/exe/midnightOfVein.zip?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OTEyMTdkMC0xZDJkLTRmZWEtOTlkZi1jMjkwYjE2MGEwZjciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJleGUvbWlkbmlnaHRPZlZlaW4uemlwIiwiaWF0IjoxNzc5MjgwMzEyLCJleHAiOjE4MTA4MTYzMTJ9.SbREzd1vaiUN-0eCvKnF6v8J3Ku9KIuZ92uiZ5Kvl6g",
+  android: "https://uvpuqtwihefagzmcohbr.supabase.co/storage/v1/object/sign/apk/mov.apk?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OTEyMTdkMC0xZDJkLTRmZWEtOTlkZi1jMjkwYjE2MGEwZjciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhcGsvbW92LmFwayIsImlhdCI6MTc3OTI3ODY1NCwiZXhwIjoxODEwODE0NjU0fQ.3SknJXhBNpI8l79vinwDN92PhY9Ui2jy6JDqQCKaGEs",
+} as const;
